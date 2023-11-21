@@ -11,7 +11,6 @@ export default function Room({ tables, rows, columns, borderRadius, height }) {
   const [orginGuest, setOriginGuest] = useState(null)
   const [destinationGuest, setDestinationGuest] = useState(null)
 
-console.log("TB:", tables)
   const handleAllowDropEvent = (e) => {
     e.preventDefault();
   };
@@ -68,7 +67,9 @@ console.log("TB:", tables)
             )
             } */}
       {tableData?.map((table, idx) => 
-      <Table table={table} 
+      <Table 
+        key={idx}
+        table={table} 
         handleDragEvent={(e) => handleDragEvent(e, table)}
         handleDropEvent={(e) => handleDropEvent(e, table)}
         handleAllowDropEvent={handleAllowDropEvent}
