@@ -39,6 +39,7 @@
     color: white;
     font-weight: bold;
     text-align: center;
+    padding: 5px;
 }
 
 .dnd-item:not(:last-of-type) {

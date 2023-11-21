@@ -11,6 +11,7 @@ function App() {
     const [height, setHeight] = useState(150)
     const [tableData, setData] = useState([])
     const [guestList, setGuestList] = useState(Guests.Guests)
+    const [guestArrangements, setGuestsArrangements] = useState([])
 
     useEffect(() => {
         let arr = (new Array(rows * columns).fill(null).map((u, i) => {
@@ -20,6 +21,7 @@ function App() {
             }
         }))
         setData(arr)
+        setGuestsArrangements(arr)
     }, [rows, columns])
 
 
@@ -28,18 +30,19 @@ function App() {
         // console.log("Tables:", tableData)
         // console.log("Guests:", guestList)
         let mappedData
-
-        mappedData = tableData.map((table) => {
+        let copy = [...tableData]
+        mappedData = copy.map((table) => {
             return {
                 ...table,
-                guestsOnTable: [...table.guestsOnTable, guestList.filter((guest) => guest.table == table.tableID)]
+                guestsOnTable: [...table.guestsOnTable, ...guestList.filter((guest) => guest.table == table.tableID)]
             }
         })
     
         console.log(mappedData)
+        setGuestsArrangements(mappedData)
 
 
-    }, [guestList, tableData])
+    }, [ tableData])
     return (
         <div className="App">
 
@@ -58,7 +61,7 @@ function App() {
                     <button style={{ width: 200, height: 50 }} onClick={(e) => { setBorderRadius('100%'); setHeight(150) }}>Oval</button>
                 </div>
                 <div className='drag-n-drop'>
-                    <Room tables={tableData} rows={rows} columns={columns} borderRadius={borderRadius} height={height} />
+                    <Room tables={guestArrangements} rows={rows} columns={columns} borderRadius={borderRadius} height={height} />
 
                     {/* {data?.map((table, tableIndex) =>
                         <Table key={tableIndex} table = {table} rows={rows} columns={columns}/>

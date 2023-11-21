@@ -66,19 +66,19 @@ export default function Room({ tables, rows, columns, borderRadius, height }) {
                     setIsDragged={setIsDragged}/>
             )
             } */}
-      {tableData?.map((table, idx) => 
-      <Table 
-        key={idx}
-        table={table} 
-        handleDragEvent={(e) => handleDragEvent(e, table)}
-        handleDropEvent={(e) => handleDropEvent(e, table)}
-        handleAllowDropEvent={handleAllowDropEvent}
-        setIsDragged={setIsDragged} 
-        color= {'#282c34'}
-        borderRadius={borderRadius}
-        height = {height}
-        label={`Table ${idx+1}`}
-        />)}
+      {tableData?.map((tableDetails, idx) => 
+        <Table 
+          key={idx}
+          tableDetails={tableDetails} 
+          handleDragEvent={(e) => handleDragEvent(e, tableDetails)}
+          handleDropEvent={(e) => handleDropEvent(e, tableDetails)}
+          handleAllowDropEvent={handleAllowDropEvent}
+          setIsDragged={setIsDragged} 
+          color= {'#282c34'}
+          borderRadius={borderRadius}
+          height = {height}
+          label={`Table ${idx+1}`}
+          />)}
     </div>
   )
 }

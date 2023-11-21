@@ -8,7 +8,7 @@ export const Data =
                         name: "John",
                         Sex: 'M',
                         Tag: 'Groom',
-                        table: "1",
+                        table: "9",
                     },
                     {
                         id: 2,
@@ -29,7 +29,7 @@ export const Data =
                         name: "Masha",
                         Sex: 'F',
                         Tag: 'Bride',
-                        table: "1",
+                        table: "9",
                     },
                     {
                         id: 5,
@@ -57,14 +57,14 @@ export const Data =
                         name: "Peter",
                         Sex: 'M',
                         Tag: 'Groom',
-                        table: "2",
+                        table: "6",
                     },
                     {
                         id: 9,
                         name: "James",
                         Sex: 'M',
                         Tag: 'Groom',
-                        table: "3",
+                        table: "4",
                     },
                     {
                         id: 10,
@@ -85,7 +85,7 @@ export const Data =
                         name: "Morty",
                         Sex: 'M',
                         Tag: 'Groom',
-                        table: "3",
+                        table: "5",
                     },
                     {
                         id: 13,
@@ -99,14 +99,14 @@ export const Data =
                         name: "Tasha",
                         Sex: 'F',
                         Tag: 'Bride',
-                        table: "2",
+                        table: "6",
                     },
                     {
                         id: 15,
                         name: "Nala",
                         Sex: 'F',
                         Tag: 'Bride',
-                        table: "3",
+                        table: "7",
                     },
                 ],
         }
