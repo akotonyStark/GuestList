@@ -37,8 +37,9 @@ export default function Room({ tables, rows, columns, borderRadius, height }) {
     tableData[startIndex] =  destination
     tableData[endIndex] = orgin
 
-    console.log(tableData, 'KK')
-    let copy = {...tableData}
+    console.log(tableData, 'Table Data')
+    let copy = [...tableData]
+    console.log(copy, "Copy")
     setTableData(copy)
   }, [destination])
 
