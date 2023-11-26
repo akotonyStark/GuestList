@@ -1,8 +1,9 @@
-import Guest from "../Table/Table";
+
 import { useEffect, useState } from "react";
 import man from '../../Assets/man.png'
 import woman from '../../Assets/woman.png'
 import Table from "../Table/Table";
+
 
 
 export default function Room({ tables, rows, columns, borderRadius, height }) {
@@ -10,6 +11,10 @@ export default function Room({ tables, rows, columns, borderRadius, height }) {
   const [, setIsDragged] = useState(false)
   const [orgin, setOrigin] = useState(null)
   const [destination, setDestination] = useState(null)
+
+
+
+
 
   const handleAllowDropEvent = (e) => {
     e.preventDefault();
@@ -31,7 +36,7 @@ export default function Room({ tables, rows, columns, borderRadius, height }) {
   useEffect(() => {
     let startIndex= tableData.findIndex((item) => item.tableID === orgin?.tableID)
     let endIndex = tableData.findIndex((item) => item.tableID === destination?.tableID)
-    console.log(startIndex, endIndex)
+    //console.log(startIndex, endIndex)
 
     //swap Items
     tableData[startIndex] =  destination
@@ -39,14 +44,14 @@ export default function Room({ tables, rows, columns, borderRadius, height }) {
 
    
     let copy = [...tableData]
-    console.log(copy, 'Table Data')
+    //console.log(copy, 'Table Data')
     //console.log(copy, "Copy")
     setTableData(copy)
   }, [destination])
 
   useEffect(() => {
     setTableData(tables)
-    //console.log(tableData, 'TD')
+    console.log(tableData, 'Table Data')
   }, [tables])
 
 

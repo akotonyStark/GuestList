@@ -1,16 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import { Data as Guests } from "../Assets/data";
 import Room from '../Components/Room/Room';
+import { useLocation } from 'react-router-dom';
 
 function ReceptionRoom({}) {
+
+
+    const {state} = useLocation()
+    // console.log("State", state)
 
     const [rows, setRows] = useState(3)
     const [columns, setColumns] = useState(3)
     const [borderRadius, setBorderRadius] = useState('2%')
     const [height, setHeight] = useState(150)
     const [tableData, setData] = useState([])
-    const [guestList, setGuestList] = useState(Guests.Guests)
+    //const [guestList, setGuestList] = useState(Guests)
+    const [guestList, setGuestList] = useState([])
     const [guestArrangements, setGuestsArrangements] = useState([])
+
+    useEffect(() => {
+        let flatData = state.flat()
+        let mapped = flatData.map((values) => {
+            return [...values.Guests]
+        })
+        console.log(mapped.flat(), 'Flat Data')
+
+        setGuestList(flatData)
+        // setGuestList([...flatData, ...Guests])
+      }, [])
+    
 
     useEffect(() => {
         let arr = (new Array(rows * columns).fill(null).map((u, i) => {
@@ -26,6 +44,7 @@ function ReceptionRoom({}) {
     useEffect(() => {
         // console.log("Tables:", tableData)
         // console.log("Guests:", guestList)
+
         let mappedData
         let copy = [...tableData]
         mappedData = copy.map((table) => {

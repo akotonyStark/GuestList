@@ -1,7 +1,4 @@
 export const Data =
-    
-        {
-            Guests:
                 [
                     {
                         id: 1,
@@ -108,6 +105,4 @@ export const Data =
                         Tag: 'Bride',
                         table: "7",
                     },
-                ],
-        }
-      
+                ]
