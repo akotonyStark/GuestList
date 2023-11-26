@@ -8,8 +8,8 @@ import Table from "../Table/Table";
 export default function Room({ tables, rows, columns, borderRadius, height }) {
   const [tableData, setTableData] = useState([])
   const [, setIsDragged] = useState(false)
-  const [orginGuest, setOriginGuest] = useState(null)
-  const [destinationGuest, setDestinationGuest] = useState(null)
+  const [orgin, setOrigin] = useState(null)
+  const [destination, setDestination] = useState(null)
 
   const handleAllowDropEvent = (e) => {
     e.preventDefault();
@@ -17,32 +17,34 @@ export default function Room({ tables, rows, columns, borderRadius, height }) {
 
   const handleDragEvent = (e, startItem) => {
     // setOriginId(e.target.id);
-    setOriginGuest(startItem)
+    setOrigin(startItem)
     console.log('Origin A', startItem)
   };
 
   const handleDropEvent = (e, endItem) => {
     // setDestinationId(e.target.id);
-    setDestinationGuest(endItem)
+    setDestination(endItem)
     console.log('Destination B', endItem)
 
   };
 
-  // useEffect(() => {
-  //   let startIndex= tableData.findIndex((item) => item.id === orginGuest?.id)
-  //   let endIndex = tableData.findIndex((item) => item.id === destinationGuest?.id)
-  //   //console.log(startIndex, endIndex)
+  useEffect(() => {
+    let startIndex= tableData.findIndex((item) => item.tableID === orgin?.tableID)
+    let endIndex = tableData.findIndex((item) => item.tableID === destination?.tableID)
+    console.log(startIndex, endIndex)
 
-  //   //swap Items
-  //   tableData.Guests[startIndex] =  destinationGuest 
-  //   tableData.Guests[endIndex] = orginGuest
+    //swap Items
+    tableData[startIndex] =  destination
+    tableData[endIndex] = orgin
 
-  //   let copy = {...tableData}
-  //   setTableData(copy)
-  // }, [destinationGuest])
+    console.log(tableData, 'KK')
+    let copy = {...tableData}
+    setTableData(copy)
+  }, [destination])
 
   useEffect(() => {
     setTableData(tables)
+    //console.log(tableData, 'TD')
   }, [tables])
 
 
@@ -50,22 +52,7 @@ export default function Room({ tables, rows, columns, borderRadius, height }) {
     <div
       className='dnd-table-group'
       style={{ gridTemplateColumns: `repeat(${columns}, 1fr)`, gridTemplateRows: `repeat(${rows}, 1fr)` }}>
-      {/* { tableData.Guests.slice(0,numOfTables).map((tableGuest, tableGuestIndex) =>
-             <div className='group-title' style={{textAlign:'center'}}> Table {tableGuestIndex+1}</div> 
-            )
-            } */}
-      {/* { tableData.Guests.map((tableGuest, tableGuestIndex) =>
-                <Guest 
-                    // color= {tableGuest.table == 1 ? '#282c34' : tableGuest.table == 2 ? '#EE700D' : tableGuest.table == 3  ? '#008179' : 'white'}
-                    // image={tableGuest.Sex == 'M' ? man : woman}
-                    // key={tableGuestIndex} 
-                    // guest={tableGuest}
-                    handleDragEvent = {(e) => handleDragEvent(e, tableGuest)}
-                    handleDropEvent = {(e) => handleDropEvent(e, tableGuest)}
-                    handleAllowDropEvent = {handleAllowDropEvent}
-                    setIsDragged={setIsDragged}/>
-            )
-            } */}
+
       {tableData?.map((tableDetails, idx) => 
         <Table 
           key={idx}
