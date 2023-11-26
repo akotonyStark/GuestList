@@ -14,19 +14,22 @@ function ReceptionRoom({}) {
     const [borderRadius, setBorderRadius] = useState('2%')
     const [height, setHeight] = useState(150)
     const [tableData, setData] = useState([])
-    //const [guestList, setGuestList] = useState(Guests)
     const [guestList, setGuestList] = useState([])
     const [guestArrangements, setGuestsArrangements] = useState([])
 
     useEffect(() => {
         let flatData = state.flat()
         let mapped = flatData.map((values) => {
-            return [...values.Guests]
+            return {
+                tableID: values.table,
+                guestsOnTable: values.Guests
+            }
         })
-        console.log(mapped.flat(), 'Flat Data')
+        console.log(mapped, 'Flat Data')
 
         setGuestList(flatData)
-        // setGuestList([...flatData, ...Guests])
+        //setGuestList(Guests)
+        //setGuestList([...mapped, ...Guests])
       }, [])
     
 
