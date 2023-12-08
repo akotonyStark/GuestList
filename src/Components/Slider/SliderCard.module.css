@@ -1,0 +1,18 @@
+.sliderCard{
+    display: flex;
+    border: 1px solid orange;
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.sliderCard_box{
+    transition: all .3s ease-in;
+}
+
+.sliderCard_box:hover{
+   box-shadow: var(--box-shadow);
+}
+
