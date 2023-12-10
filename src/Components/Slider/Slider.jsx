@@ -6,7 +6,16 @@ import style from './Slider.module.css'
 import SliderCard from './SliderCard'
 
 const Slider = () => {
-    const sliderArray = [1,2,3,4,5,6]
+    const sliderArray = [
+        {id:1, name: 'John', gender: 'M'},
+        {id:2, name: 'Jane', gender: 'F'},
+        {id:3, name: 'Mike', gender: 'M'},
+        {id:4, name: 'Terry', gender: 'M'},
+        {id:5, name: 'Jenny', gender: 'F'},
+        {id:6, name: 'Matt', gender: 'M'},
+        {id:7, name: 'Mary', gender: 'F'},
+        {id:8, name: 'Molly', gender: 'F'}
+    ]
     const [width, setWidth] = useState(0)
 
     const dragSlider = useRef()
@@ -51,12 +60,6 @@ const Slider = () => {
                 >
                     {sliderArray.map((el, i) => {
                         return <SliderCard key={i+1} el={el} i={i} />
-                        // return (
-                        // <div style={{display:'flex', flexDirection:'row', justifyContent:'center'}}>
-                        //     <div style={{border: '1px solid orange', height:100, borderRadius: 100, width: 100}}>
-                        //         <h6>Guest {el}</h6>
-                        //     </div>
-                        // </div>)
                     })}
                 </motion.div>
             </motion.div>
